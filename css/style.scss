@@ -1,0 +1,382 @@
+// variables
+$mainTextColor: #555;
+$titleTextColor: #777;
+$subtitleTextColor: #999;
+$secondColor: #5363db;
+$secondColorLite: #5262dacc;
+
+// 
+
+@mixin burgerIcon($top) {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: $secondColor;
+    position: absolute;
+    top: $top;
+    transition: transform .3s;
+}
+
+
+// global-styles
+
+*,
+*:focus{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans";
+  font-size: 14px;
+  font-weight: 400;
+  color: $mainTextColor;
+  // border: 0;
+  // outline: 0;
+}
+button:hover{
+  text-shadow: 2px 2px 4px #333;
+  box-shadow: 3px 3px 6px #777;
+}
+
+// header
+
+header{
+  max-width: 100%;
+  width: 1400px;
+  padding: 16px 0px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav{
+  display: flex;
+  list-style: none;
+  align-items: center;
+
+  li{
+    margin-left: 25px;
+
+    a{
+      position: relative;
+      padding-bottom: 5px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: .2s;
+
+      &:hover,
+      &:focus{
+        color: $secondColor;
+      }
+
+      &::after{
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 1px;
+        background-color: $secondColor;
+        transition: width .3s;
+        transform: translate(-50%);
+      }
+
+      &:hover::after,
+      &:focus::after{
+        width: 50%;
+      }
+    }
+  }
+}
+input[type=checkbox]{
+  opacity: 0;
+
+  &:checked ~ label span{
+    transform: rotate(45deg);
+  }
+
+  &:checked ~ label span::after,
+  &:checked ~ label span::before{
+    top: 0;
+    transform: rotate(90deg);
+  }
+
+  &:checked ~ .nav{
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+label{
+  display: none;
+}
+.logo{
+  height: 68px;
+  width: 68px;
+
+  img{
+      width: 100%;
+      height: 100%;
+  }
+}
+
+@media (max-width: 1420px){
+  header{
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+}
+@media(max-width: 768px){
+  header label{
+    display: flex;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    z-index: 5;
+    top: 30px;
+    right: 25px;
+    align-items: center;
+    justify-content: center;
+
+    span{
+      height: 2px;
+      width: 100%;
+      background-color: $secondColor;
+      position: relative;
+      transition: transform .3s;
+
+      &::after{
+        @include burgerIcon(10px)
+      }
+
+      &::before{
+        @include burgerIcon(-10px)
+      }
+    }
+  }
+  .nav{
+    position: absolute;
+    top: 100px;
+    right: 0;
+    left: 0;
+    background-color: #fff;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transform-origin: top;
+    transform: scaleY(0);
+    opacity: 0;
+    transition: transform .3s;
+
+    li{
+      margin-left: 0;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+  }
+}
+
+
+// main
+
+// form-section
+
+.form-sctn{
+  height: 100vh;
+  background: linear-gradient(rgba(83, 99, 219, .8), rgba(83, 99, 219, .8)) no-repeat , url(../images/bg-01.jpg) no-repeat center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form{
+  display: flex;
+  flex-direction: column;
+  margin-right: 90px;
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 40px 30px 35px;
+
+  p{
+    margin-bottom: 30px;
+    font-size: 26px;
+    line-height: 1.2;
+    font-weight: 600;
+    color: $secondColor;
+  }
+
+  .form-item{
+    width: 240px;
+    height: 50px;
+    padding: 0 10px;
+    margin-bottom: 20px;
+    background-color: #f2f2f2;
+    border: 0;
+    border-radius: 10px;
+
+    
+  }
+  #input-class{
+    margin-bottom: 30px;
+    // appearance: ;
+  }
+  #input-class:hover,
+  #input-class:active,
+  #input-class:focus{
+    border: 0;
+    -webkit-outline: none;
+    outline: 0;
+  }
+// Убрать обводку при навидении на стрелку "вниз"
+  // #input-class:hover{
+  //   border: 0;
+  //   outline: 0;
+
+  // }
+
+//
+
+.__select {
+  position: relative;
+  width: 240px;
+  height: 50px;
+  margin-bottom: 30px;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+    transition: border-bottom-left-radius .3s ease-out, border-bottom-right-radius .3s ease-out;
+
+  &[data-state="active"] {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    .__select__title {
+      &::before {
+        transform: translate(-3px, -50%) rotate(-45deg);
+      }
+
+      &::after {
+        transform: translate(3px, -50%) rotate(45deg);
+      }
+    }
+    
+    .__select__content {
+      opacity: 1;
+    }
+    
+    .__select__label + .__select__input + .__select__label {
+      max-height: 50px;
+      border-top-width: 1px;
+    }
+  }
+}
+.__select__title {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 8px 16px;
+
+  border-radius: 10px;
+  
+  cursor: pointer;
+
+  &::before,
+  &::after {
+    content: "";
+
+    position: absolute;
+    top: 50%;
+    right: 16px;
+
+    display: block;
+    width: 10px;
+    height: 2px;
+
+    transition: all 0.3s ease-out;
+
+    background-color: #555;
+
+    transform: translate(-3px, -50%) rotate(45deg);
+  }
+  &::after {
+    transform: translate(3px, -50%) rotate(-45deg);
+  }
+
+  &:hover {
+    border-color: $secondColor;
+
+    &::before,
+    &::after {
+      background-color: $secondColor;
+    }
+  }
+}
+
+.__select__content {
+  position: absolute;
+  top: 50px;
+
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  background-color: #f2f2f2;
+
+  border-top: none;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  
+  transition: all 0.3s ease-out;
+
+  opacity: 0;
+  z-index: 8;
+}
+.__select__input {
+  display: none;
+
+  &:checked + label {
+    background-color: $secondColor;
+    color: #fff;
+  }
+}
+.__select__label {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  max-height: 0;
+  padding: 0 16px;
+  
+  transition: all 0.2s ease-out;
+
+  cursor: pointer;
+  
+  overflow: hidden;
+
+  & + input + & {
+    border-top: 0 solid #C7CCD160;
+  }
+
+  &:hover {
+    background-color: $secondColorLite !important;
+
+    color: #ffffff;
+  }
+}
+
+//
+
+  button{
+    width: 170px;
+    height: 50px;
+    border-radius: 10px;
+    align-self: flex-end;
+    background-color: $secondColor;
+    color: #fff;
+    font-size: 16px;
+    line-height: 1.2;
+    
+  }
+  
+}

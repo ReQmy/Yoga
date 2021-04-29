@@ -1,0 +1,336 @@
+*,
+*:focus {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans";
+  font-size: 14px;
+  font-weight: 400;
+  color: #555;
+}
+
+button:hover {
+  text-shadow: 2px 2px 4px #333;
+  box-shadow: 3px 3px 6px #777;
+}
+
+header {
+  max-width: 100%;
+  width: 1400px;
+  padding: 16px 0px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav {
+  display: flex;
+  list-style: none;
+  align-items: center;
+}
+
+.nav li {
+  margin-left: 25px;
+}
+
+.nav li a {
+  position: relative;
+  padding-bottom: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: .2s;
+}
+
+.nav li a:hover, .nav li a:focus {
+  color: #5363db;
+}
+
+.nav li a::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background-color: #5363db;
+  transition: width .3s;
+  transform: translate(-50%);
+}
+
+.nav li a:hover::after, .nav li a:focus::after {
+  width: 50%;
+}
+
+input[type=checkbox] {
+  opacity: 0;
+}
+
+input[type=checkbox]:checked ~ label span {
+  transform: rotate(45deg);
+}
+
+input[type=checkbox]:checked ~ label span::after,
+input[type=checkbox]:checked ~ label span::before {
+  top: 0;
+  transform: rotate(90deg);
+}
+
+input[type=checkbox]:checked ~ .nav {
+  transform: scaleY(1);
+  opacity: 1;
+}
+
+label {
+  display: none;
+}
+
+.logo {
+  height: 68px;
+  width: 68px;
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 1420px) {
+  header {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  header label {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    z-index: 5;
+    top: 30px;
+    right: 25px;
+    align-items: center;
+    justify-content: center;
+  }
+  header label span {
+    height: 2px;
+    width: 100%;
+    background-color: #5363db;
+    position: relative;
+    transition: transform .3s;
+  }
+  header label span::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #5363db;
+    position: absolute;
+    top: 10px;
+    transition: transform .3s;
+  }
+  header label span::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #5363db;
+    position: absolute;
+    top: -10px;
+    transition: transform .3s;
+  }
+  .nav {
+    position: absolute;
+    top: 100px;
+    right: 0;
+    left: 0;
+    background-color: #fff;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transform-origin: top;
+    transform: scaleY(0);
+    opacity: 0;
+    transition: transform .3s;
+  }
+  .nav li {
+    margin-left: 0;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+}
+
+.form-sctn {
+  height: 100vh;
+  background: linear-gradient(rgba(83, 99, 219, 0.8), rgba(83, 99, 219, 0.8)) no-repeat, url(../images/bg-01.jpg) no-repeat center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-right: 90px;
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 40px 30px 35px;
+}
+
+.form p {
+  margin-bottom: 30px;
+  font-size: 26px;
+  line-height: 1.2;
+  font-weight: 600;
+  color: #5363db;
+}
+
+.form .form-item {
+  width: 240px;
+  height: 50px;
+  padding: 0 10px;
+  margin-bottom: 20px;
+  background-color: #f2f2f2;
+  border: 0;
+  border-radius: 10px;
+}
+
+.form #input-class {
+  margin-bottom: 30px;
+}
+
+.form #input-class:hover,
+.form #input-class:active,
+.form #input-class:focus {
+  border: 0;
+  -webkit-outline: none;
+  outline: 0;
+}
+
+.form .__select {
+  position: relative;
+  width: 240px;
+  height: 50px;
+  margin-bottom: 30px;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  transition: border-bottom-left-radius .3s ease-out, border-bottom-right-radius .3s ease-out;
+}
+
+.form .__select[data-state="active"] {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.form .__select[data-state="active"] .__select__title::before {
+  transform: translate(-3px, -50%) rotate(-45deg);
+}
+
+.form .__select[data-state="active"] .__select__title::after {
+  transform: translate(3px, -50%) rotate(45deg);
+}
+
+.form .__select[data-state="active"] .__select__content {
+  opacity: 1;
+}
+
+.form .__select[data-state="active"] .__select__label + .__select__input + .__select__label {
+  max-height: 50px;
+  border-top-width: 1px;
+}
+
+.form .__select__title {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 8px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.form .__select__title::before, .form .__select__title::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  display: block;
+  width: 10px;
+  height: 2px;
+  transition: all 0.3s ease-out;
+  background-color: #555;
+  transform: translate(-3px, -50%) rotate(45deg);
+}
+
+.form .__select__title::after {
+  transform: translate(3px, -50%) rotate(-45deg);
+}
+
+.form .__select__title:hover {
+  border-color: #5363db;
+}
+
+.form .__select__title:hover::before, .form .__select__title:hover::after {
+  background-color: #5363db;
+}
+
+.form .__select__content {
+  position: absolute;
+  top: 50px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #f2f2f2;
+  border-top: none;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  transition: all 0.3s ease-out;
+  opacity: 0;
+  z-index: 8;
+}
+
+.form .__select__input {
+  display: none;
+}
+
+.form .__select__input:checked + label {
+  background-color: #5363db;
+  color: #fff;
+}
+
+.form .__select__label {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  max-height: 0;
+  padding: 0 16px;
+  transition: all 0.2s ease-out;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.form .__select__label + input + .form .__select__label {
+  border-top: 0 solid #C7CCD160;
+}
+
+.form .__select__label:hover {
+  background-color: #5262dacc !important;
+  color: #ffffff;
+}
+
+.form button {
+  width: 170px;
+  height: 50px;
+  border-radius: 10px;
+  align-self: flex-end;
+  background-color: #5363db;
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.2;
+}
