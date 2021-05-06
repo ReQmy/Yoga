@@ -1,9 +1,12 @@
+@import url(FREESCPT.css);
+
 // variables
 $mainTextColor: #555;
 $titleTextColor: #777;
 $subtitleTextColor: #999;
 $secondColor: #5363db;
 $secondColorLite: #5262dacc;
+$dscrptnColor: white;
 
 // mixines
 
@@ -17,7 +20,12 @@ $secondColorLite: #5262dacc;
     top: $top;
     transition: transform .3s;
 }
-
+@mixin forpic($fpic) {
+  background-image: $fpic ;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
 
 // global-styles
 
@@ -33,16 +41,33 @@ $secondColorLite: #5262dacc;
   border: 0;
   outline: 0;
 }
+.wrapper{
+  overflow: hidden;
+}
+.impact,
+header,
+.slider-sctn{
+  max-width: 100%;
+  width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
 button:hover{
   text-shadow: 2px 2px 4px #333;
   box-shadow: 3px 3px 6px #777;
 }
 
+h2{
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  color: $secondColor;
+}
+
 // header
 
 header{
-  max-width: 100%;
-  width: 1400px;
   padding: 16px 0px;
   margin-left: auto;
   margin-right: auto;
@@ -362,3 +387,255 @@ label{
   }
   
 }
+@media (max-width: 768px) {
+  .form-sctn, .description{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    .form{
+      margin: 0 0 30px;
+    }
+    .description h1{
+      padding: 0;
+      margin-bottom: 30px;
+    }
+  }
+}
+
+.description{
+  h1{
+    max-width: 485px;
+    font-size: 48px;
+    font-weight: 700;
+    color: $dscrptnColor;
+    text-transform: uppercase;
+    padding-bottom: 40px;
+    line-height: 72px;
+  }
+  p{
+    max-width: 270px;
+    font-family: 'FREESCPT';
+    font-size: 40px;
+    color: $dscrptnColor;
+    line-height: 1.2;
+  }
+}
+
+// section program
+
+.abtyoga{
+  padding-top: 125px;
+  text-align: center;
+  margin-bottom: 75px;
+  p{
+    font-family: 'FREESCPT';
+    color:$titleTextColor;
+    font-size: 41px;
+  }
+}
+
+.impact{
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 200px;
+  @media (max-width: 1200px) {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+}
+.yoga-for{
+  width: calc(50% - 30px);
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+  margin-bottom: 25px;
+  border-radius: 10px;
+  box-shadow: 4px 4px 20px 0px rgba(0,0,0,0.1);
+  &:nth-child(odd){
+    margin-left: 0;
+  }
+  @media(max-width: 768px) {
+    flex-direction: column;
+  }
+  @media(max-width: 570px) {
+    width: calc(100% - 30px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+.yoga-for--text{
+  // max-width: 300px;
+  padding: 45px 25px;
+  @media(max-width: 768px) {
+    padding: 25px;
+  }
+  a{text-decoration: none;}
+
+  h3{
+    font-size: 20px;
+    line-height: 45px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: $titleTextColor;
+  }
+  p{line-height: 20px;}
+  & > p{
+    margin-top: 30px;
+    margin-bottom: 15px;
+  }
+  .subtitle{
+    font-weight: 400;
+    color: $subtitleTextColor;
+  }
+}
+.yoga-for--img{
+  padding-top: 300px;
+  padding-left: 270px;
+  background-position: 50% 50%;
+  background-size: cover;
+  @media(max-width: 1200px) {
+    padding-left: 200px;
+  }
+  @media(max-width: 768px) {
+    padding-left: 100%;
+  }
+}
+
+.eight-fotos{
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 175px;
+  & a:nth-child(2){
+    @include forpic(url(../images/img-06.jpg))
+  }
+  & :nth-child(3){
+    @include forpic(url(../images/img-07.jpg))
+  }
+  & :nth-child(4){
+    @include forpic(url(../images/img-08.jpg))
+  }
+  & :nth-child(5){
+    @include forpic(url(../images/img-09.jpg))
+  }
+  & :nth-child(6){
+    @include forpic(url(../images/img-10.jpg))
+  }
+  & :nth-child(7){
+    @include forpic(url(../images/img-11.jpg))
+  }
+  & :nth-child(8){
+    @include forpic(url(../images/img-12.jpg))
+  }
+}
+.foto{
+  position: relative;
+  padding-top: 300px;
+  background: url(../images/img-05.jpg) no-repeat;
+  background-size: cover;
+  width: 25%;
+  @media (max-width: 768px) {
+    width: 50%;
+  }
+  &::after{
+    content: '';
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 4;
+    background-color: $secondColorLite;
+    transition: .3s;
+  }
+  &::before{
+    content: '';
+    opacity: 0;
+    width: 42px;
+    height: 42px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+    transform: translate(-50%, -50%);
+    background: url(../images/loupe.svg) center no-repeat, linear-gradient(#fff, #fff);
+    background-size: 18px;
+    border-radius: 50%;
+    transition: .3s;
+  }
+  &:hover::after,
+  &:hover::before{
+    opacity: 1;
+  }
+}
+
+// slider section
+.slider-sctn{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 175px;
+  .slider-text{
+    width: 45%;
+    padding-top: 25px;
+  }
+  .slider{
+    width: 45%;
+    .slider-item{
+      padding-top: 300px;
+      background-size: cover;
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      @media(max-width: 786px) {
+        padding-top: 200px;
+      }
+    }
+    .slick-list{
+      box-shadow: 4px 4px 15px 0px #00000026;
+      border-radius: 10px;
+    }
+    .slick-prev, 
+    .slick-next{
+      width: 50px;
+      height: 50px;
+      z-index: 3;
+      border-radius: 50%;
+      background-color: #fff;
+      box-shadow: 4px 4px 15px 0px #00000026;
+
+      &::before{
+        content: '';
+        display: block;
+        width: 12px;
+        height: 12px;
+        border-top: 3px solid $secondColor;
+        border-left: 3px solid $secondColor;
+      }
+    }
+    .slick-prev::before{
+      transform: rotate(-45deg);
+      margin-left: 20px;
+    }
+    .slick-next::before{
+      transform: rotate(135deg);
+      margin-left: 15px;
+    }
+    .slick-prev:hover, 
+    .slick-prev:focus, 
+    .slick-next:hover, 
+    .slick-next:focus{
+      background-color: #fff;
+    }
+    @media(max-width:786px) {
+      .slick-slider{
+        width: 90%;
+        margin: 0 auto;
+      }
+    }
+  }
+}
+

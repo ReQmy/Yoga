@@ -4,8 +4,13 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="slick-1.8.1/slick/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="slick-1.8.1/slick/slick-theme.css"/>
+
   <link rel="stylesheet" href="css/style.css">
 
   <title>Yoga</title>
@@ -90,25 +95,96 @@
           <h1>Just Balance your Mind & Body</h1>
           <p>Create the healthy living for yourself</p>
         </div>
+      </section>
 
+      <section class="programm">
+
+        <div class="abtyoga">
+          <h2>yoga feature programm</h2>
+          <p>Our classes</p>
+        </div>
+  
+        <div class="impact">
+
+          <div class="yoga-for">
+            <div style="background-image: url(images/img-01.jpg);" class="yoga-for--img"></div>
+            <div class="yoga-for--text">
+              <a href="#">
+                <h3>Yoga For Health</h3>
+              </a>
+              <p>Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+              <a href="#">
+                <p class="subtitle">Ashtanga - Hatha</p>
+              </a>
+            </div>
+          </div>
+
+          <div class="yoga-for">
+            <div style="background-image: url(images/img-02.jpg);" class="yoga-for--img"></div>
+            <div class="yoga-for--text">
+              <a href="#">
+                <h3>Yoga For Lose Weight</h3>
+              </a>
+              <p>Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+              <a href="#">
+                <p class="subtitle">Ashtanga - Hatha</p>
+              </a>
+            </div>
+          </div>
+
+          <div class="yoga-for">
+            <div style="background-image: url(images/img-03.jpg);" class="yoga-for--img"></div>
+            <div class="yoga-for--text">
+              <a href="#">
+                <h3>Yoga For Children</h3>
+              </a>
+              <p>Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+              <a href="#">
+                <p class="subtitle">Ashtanga - Hatha</p>
+              </a>
+            </div>
+          </div>
+
+          <div class="yoga-for">
+            <div style="background-image: url(images/img-04.jpg);" class="yoga-for--img"></div>
+            <div class="yoga-for--text">
+              <a href="#">
+                <h3>Yoga For Elderly</h3>
+              </a>
+              <p>Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+              <a href="#">
+                <p class="subtitle">Ashtanga - Hatha</p>
+              </a>
+            </div>
+          </div>
+
+        </div>
+  
+      </section>
+    
+      <section class="eight-fotos">
+        <a href="#" class="foto"></a>
+        <a href="#" class="foto"></a>
+        <a href="#" class="foto"></a>
+        <a href="#" class="foto"></a>
+        <a href="#" class="foto"></a>
+        <a href="#" class="foto"></a>
+        <a href="#" class="foto"></a>
+        <a href="#" class="foto"></a>
       </section>
 
 
 
-      <section>
-
-      </section>
-
-
-
-      <section>
-
-      </section>
-
-
-
-      <section>
-
+      <section class="slider-sctn">
+        <div class="slider-text">
+          <h2>About us</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation toui ullamcomi laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor it in lorei voluptate velit esse cillum dolore eu fugiat nulla pariatur lorem ispum loting sokui.</p>
+        </div>
+        <div class="slider">
+          <div style="background-image: url(../images/img-11.jpg);" class="slider-item"></div>
+          <div style="background-image: url(../images/img-12.jpg);" class="slider-item"></div>
+          <div style="background-image: url(../images/img-13.jpg);" class="slider-item"></div>
+        </div>
       </section>
 
 
@@ -135,6 +211,21 @@
 
 
   </div>
-  <script src="js/script.js"></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript" src="slick-1.8.1/slick/slick.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('.slider').slick({
+        
+      });
+    });
+    $('.slider').slick({
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1
+    });
+  </script>
+  <script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>
